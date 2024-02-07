@@ -1,0 +1,47 @@
+1.What is software? What is software engineering?
+-->Software refers to a set of instructions, data, or programs that enable a computer to perform specific tasks.
+-->Software engineering is a disciplined approach to the design, development, testing, and maintenance of software.
+
+2.Explain types of software.
+-->System Software:Operating Systems (OS): Examples include Windows, macOS, Linux, and Android. Operating systems manage hardware resources and provide a platform for running application software.
+-->Application Software:Productivity Software: Includes word processors (e.g., Microsoft Word, Google Docs), spreadsheets (e.g., Microsoft Excel, Google Sheets), and presentation software (e.g., Microsoft PowerPoint, Google Slides).
+-->Development Software:Integrated Development Environments (IDEs): Provide tools for software development, including code editors, debuggers, and compilers (e.g., Visual Studio, Eclipse, IntelliJ)
+-->Security Software:Antivirus Software: Protects against malicious software and viruses (e.g., Norton, McAfee, Windows Defender).
+
+3.What is SDLC? Explain each phase of SDLC.
+-->SDLC is a systematic process for planning, creating, testing, deploying, and maintaining an information system. It is a framework that outlines the tasks and activities involved in each phase of software development. The primary objective of SDLC is to produce high-quality software that meets or exceeds customer expectations while staying within time and budget constraints.
+
+The typical phases of SDLC are as follows:
+
+Planning:Objective: Define the project goals, scope, and constraints.
+Activities: Conduct feasibility studies, gather requirements, create a project plan, and establish the project team.
+
+Feasibility Study:Objective: Assess the technical, operational, and financial feasibility of the project.
+Activities: Evaluate project requirements, potential solutions, and their impact on the organization. Determine whether the project is viable.
+
+System Design:Objective: Create a blueprint for the software system based on the requirements.
+Activities: Design system architecture, specify data structures, describe interfaces, and define algorithms. This phase may involve creating high-level and low-level design documents.
+
+Implementation (Coding):Objective: Transform the design into actual code.
+Activities: Write code according to the design specifications. This phase involves programming, unit testing, and code documentation.
+
+Testing:Objective: Verify that the software behaves as expected and identify defects.
+Activities: Conduct various testing activities, including unit testing, integration testing, system testing, and user acceptance testing. Fix and retest any identified issues.
+
+Deployment:Objective: Release the software to the end-users or production environment.
+Activities: Install the software, perform data migration (if necessary), and ensure that the system is ready for use. This phase may involve training end-users and support staff.
+
+Maintenance and Support:Objective: Address issues, make updates, and enhance the software as needed.
+Activities: Provide ongoing support, address user feedback, and make necessary modifications to the software to meet changing requirements.
+
+4.What is DFD? Create a DFD diagram on Flipkart.
+--> Data Flow Diagram (DFD) is a graphical representation of the flow of data within a system, illustrating how input data is transformed into output data through processes. It typically consists of processes, data stores, data flows, and external entities. DFDs are commonly used in systems engineering and software development to model and understand the flow of data in a system.
+
+5. What is Flow chart? Create a flowchart to make addition of two
+numbers.
+-->
+A flowchart is a visual representation of a process, showing the steps involved and the flow of data or control between them. It uses different shapes to represent different types of steps, such as processes, decisions, inputs, or outputs. Arrows indicate the flow direction.
+
+6. What is Use case Diagram? Create a use-case on bill payment on
+paytm.
+-->A use case diagram is a visual representation of the interactions between actors (users or external systems) and a system, illustrating how the system responds to various events. It highlights the different ways a system can be used and the various actors involved.
