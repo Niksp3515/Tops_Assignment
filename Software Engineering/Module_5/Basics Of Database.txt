@@ -1,0 +1,73 @@
+1.What do you understand By Database.
+Ans:A database is a structured collection of data that is organized in a way to allow easy access, management, and manipulation. It serves as a central repository for storing, managing, and retrieving information efficiently. 
+
+2. What is Normalization?
+Ans:Normalization is a process used in database design to organize data in a way that reduces redundancy and dependency, thus improving data integrity and efficiency. The goal of normalization is to design a database schema that minimizes data redundancy and ensures that each piece of data is stored only once, thereby reducing the risk of anomalies such as insertion, update, and deletion anomalies.
+
+3. What is Difference between DBMS and RDBMS?
+Ans:DBMS (Database Management System) and RDBMS (Relational Database Management System) are both software systems designed to manage databases, but they differ in their approach to organizing and accessing data:
+
+Data Structure:
+
+DBMS: DBMS supports various data models such as hierarchical, network, or object-oriented. It may not enforce relationships between data entities.
+RDBMS: RDBMS organizes data into tables with rows and columns, and it enforces relationships between tables using keys (e.g., primary keys and foreign keys).
+Data Integrity:
+
+DBMS: Data integrity constraints may be limited or not enforced at all.
+RDBMS: RDBMS enforces data integrity constraints such as entity integrity (each row has a unique identifier) and referential integrity (relationships between tables are maintained).
+Data Manipulation:
+
+DBMS: DBMS typically provides basic data manipulation capabilities like insert, update, delete, and retrieve.
+RDBMS: RDBMS provides advanced data manipulation capabilities along with support for SQL (Structured Query Language) for querying and manipulating data in tables.
+
+5. What do you understand By Data Redundancy?
+Ans:Data redundancy refers to the duplication of data within a database system. It occurs when the same piece of data is stored multiple times in different locations or tables within the database. 
+
+6. What is DDL Interpreter?
+Ans:A DDL (Data Definition Language) interpreter is a component of a database management system (DBMS) responsible for processing and executing DDL statements. DDL statements are used to define, modify, and manage the structure and characteristics of database objects such as tables, indexes, views, and constraints.
+
+7. What is DML Compiler in SQL?
+Ans:In SQL (Structured Query Language), a DML (Data Manipulation Language) compiler is a component of the database management system (DBMS) responsible for processing and executing DML statements. DML statements are used to retrieve, insert, update, and delete data in database tables.
+
+8. What is SQL Key Constraints writing an Example of SQL Key Constraints?
+Ans:SQL key constraints are rules that enforce the integrity and uniqueness of data within a database table. There are several types of key constraints:
+
+Primary Key Constraint: This constraint ensures that each record in a table is uniquely identifiable. It enforces the uniqueness of values in one or more columns and also ensures that the column(s) cannot contain NULL values.
+
+Unique Constraint: Similar to the primary key constraint, a unique constraint ensures that each value in a specified column or combination of columns is unique. However, unlike the primary key constraint, a unique constraint can allow NULL values.
+Example:
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+
+-- Creating a table with unique constraint
+CREATE TABLE Employees (
+    EmployeeID INT UNIQUE,
+    Name VARCHAR(50),
+    Department VARCHAR(50)
+);
+
+9. What is save Point? How to create a save Point write a Query?
+Ans:A savepoint is a point within a transaction that allows you to mark a specific point to which you can roll back if necessary. It provides a way to divide a transaction into smaller parts and selectively roll back changes made since a particular savepoint.
+Syntax to create savepoint:
+SAVEPOINT savepoint_name;
+
+10.What is trigger and how to create a Trigger in SQL?
+Ans:A trigger in SQL is a special type of stored procedure that automatically executes in response to certain events occurring in the database. These events can include data manipulation operations such as INSERT, UPDATE, DELETE, or specific actions on database objects like creating or dropping tables. Triggers are commonly used to enforce business rules, maintain data integrity, or perform auditing tasks.
+-->Triggers consist of three main components:1)Event
+											 2)Condition
+											 3)Action
+Example:
+CREATE TRIGGER update_last_updated
+AFTER UPDATE
+ON employees
+FOR EACH ROW
+BEGIN
+    UPDATE employees
+    SET last_updated = CURRENT_TIMESTAMP
+    WHERE employee_id = NEW.employee_id; 
+END;
+
+											 

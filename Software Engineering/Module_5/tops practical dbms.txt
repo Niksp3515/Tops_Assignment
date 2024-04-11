@@ -1,0 +1,282 @@
+Microsoft Windows [Version 10.0.22631.3374]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\niksp>mysql -u root -p
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 125
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use ola;
+ERROR 1049 (42000): Unknown database 'ola'
+mysql> use tops_dbms;
+Database changed
+mysql> create table Employee(emp_id int auto_increment primary key,f_name text,l_name text,salary decimal(15,2),join_date date,department varchar(30));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe employee;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| emp_id     | int           | NO   | PRI | NULL    | auto_increment |
+| f_name     | text          | YES  |     | NULL    |                |
+| l_name     | text          | YES  |     | NULL    |                |
+| salary     | decimal(15,2) | YES  |     | NULL    |                |
+| join_date  | date          | YES  |     | NULL    |                |
+| department | varchar(30)   | YES  |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into employee
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table employee modify column join_date timestamp;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| emp_id     | int           | NO   | PRI | NULL    | auto_increment |
+| f_name     | text          | YES  |     | NULL    |                |
+| l_name     | text          | YES  |     | NULL    |                |
+| salary     | decimal(15,2) | YES  |     | NULL    |                |
+| join_date  | timestamp     | YES  |     | NULL    |                |
+| department | varchar(30)   | YES  |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into employee values
+    -> (1,"John","Abraham",1000000,now(),"Banking");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++--------+--------+---------+------------+---------------------+------------+
+| emp_id | f_name | l_name  | salary     | join_date           | department |
++--------+--------+---------+------------+---------------------+------------+
+|      1 | John   | Abraham | 1000000.00 | 2024-03-31 10:47:24 | Banking    |
++--------+--------+---------+------------+---------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> update table employee set join_date=2013-01-01 12:00:00 AM;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee set join_date=2013-01-01 12:00:00 AM' at line 1
+mysql> update table employee set join_date=2013-01-01 12:00:00 AM where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee set join_date=2013-01-01 12:00:00 AM where emp_id=1' at line 1
+mysql> update table employee set join_date=2013-01-01 12:00:00 where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee set join_date=2013-01-01 12:00:00 where emp_id=1' at line 1
+mysql> update employee set join_date=2013-01-01 12:00:00 AM where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '12:00:00 AM where emp_id=1' at line 1
+mysql> update employee set join_date=2013-01-01 12:00:00 where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '12:00:00 where emp_id=1' at line 1
+mysql> update employee set join_date=2013-01-0112:00:00 where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':00:00 where emp_id=1' at line 1
+mysql> update employee set join_date=("2013-01-01 12:00:00") where emp_id=1;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++--------+--------+---------+------------+---------------------+------------+
+| emp_id | f_name | l_name  | salary     | join_date           | department |
++--------+--------+---------+------------+---------------------+------------+
+|      1 | John   | Abraham | 1000000.00 | 2013-01-01 12:00:00 | Banking    |
++--------+--------+---------+------------+---------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> update table employee set join_date=("2013-JAN-01 12:00:00 AM") where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee set join_date=("2013-JAN-01 12:00:00 AM") where emp_id=1' at line 1
+mysql> update table employee set join_date=("2013-01-01 12:00:00 AM") where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee set join_date=("2013-01-01 12:00:00 AM") where emp_id=1' at line 1
+mysql> update table employee set join_date=("2013-01-01 12:00:00 AM") where emp_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee set join_date=("2013-01-01 12:00:00 AM") where emp_id=1' at line 1
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2024-03-31     |
++----------------+
+1 row in set (0.02 sec)
+
+mysql>	 insert into employee values
+    	 (2,"Michael","Clarke",800000,"2012-01-01 12:00:00","Insurance"),
+    	 (3,"Roy","Thomas",700000,"2013-02-01 12:00:00","Banking"),
+    	 (4,"Tom","Jose",600000,"2013-02-01 12:00:00","Insurance"),
+    	 (5,"Jerry","Pinto",650000,"2013-02-01 12:00:00","Insurance"),
+    	 (6,"Philip","Mathew",750000,"2013-02-01 12:00:00","Services"),
+    	 (7,"TestName1","123",650000,"2013-01-01 12:00:00","Services"),
+    	 (8,"TestName2","Lname%",600000,"2013-02-01 12:00:00","Insurance");
+Query OK, 7 rows affected (0.03 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++--------+-----------+---------+------------+---------------------+------------+
+| emp_id | f_name    | l_name  | salary     | join_date           | department |
++--------+-----------+---------+------------+---------------------+------------+
+|      1 | John      | Abraham | 1000000.00 | 2013-01-01 12:00:00 | Banking    |
+|      2 | Michael   | Clarke  |  800000.00 | 2012-01-01 12:00:00 | Insurance  |
+|      3 | Roy       | Thomas  |  700000.00 | 2013-02-01 12:00:00 | Banking    |
+|      4 | Tom       | Jose    |  600000.00 | 2013-02-01 12:00:00 | Insurance  |
+|      5 | Jerry     | Pinto   |  650000.00 | 2013-02-01 12:00:00 | Insurance  |
+|      6 | Philip    | Mathew  |  750000.00 | 2013-02-01 12:00:00 | Services   |
+|      7 | TestName1 | 123     |  650000.00 | 2013-01-01 12:00:00 | Services   |
+|      8 | TestName2 | Lname%  |  600000.00 | 2013-02-01 12:00:00 | Insurance  |
++--------+-----------+---------+------------+---------------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> create table Incentive(emp_ref_id int foreign key references employee
+(emp_id),Incentive_date date,Incentive_amount decimal(10,2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key references employee(emp_id),Incentive_date date,Incentive_amount dec' at line 1
+mysql> create table Incentive(emp_ref_id int,Incentive_date date,Incentive_amount decimal(10,2),foreign key(emp_ref_id) references employee(emp_id));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> describe incentive;
++------------------+---------------+------+-----+---------+-------+
+| Field            | Type          | Null | Key | Default | Extra |
++------------------+---------------+------+-----+---------+-------+
+| emp_ref_id       | int           | YES  | MUL | NULL    |       |
+| Incentive_date   | date          | YES  |     | NULL    |       |
+| Incentive_amount | decimal(10,2) | YES  |     | NULL    |       |
++------------------+---------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into incentive values (1,current_date(),5000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from incentive;
++------------+----------------+------------------+
+| emp_ref_id | Incentive_date | Incentive_amount |
++------------+----------------+------------------+
+|          1 | 2024-03-31     |          5000.00 |
++------------+----------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> update incentive set Incentive_date="2013-02-01" where emp_ref_id=1;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from incentive;
++------------+----------------+------------------+
+| emp_ref_id | Incentive_date | Incentive_amount |
++------------+----------------+------------------+
+|          1 | 2013-02-01     |          5000.00 |
++------------+----------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> 	insert into incentive values
+    	(2,"2013-02-01",3000),
+    	(3,"2013-02-01",4000),
+    	(1,"2013-01-01",4500),
+    	 (2,"2013-01-01",3500);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from incentive;
++------------+----------------+------------------+
+| emp_ref_id | Incentive_date | Incentive_amount |
++------------+----------------+------------------+
+|          1 | 2013-02-01     |          5000.00 |
+|          2 | 2013-02-01     |          3000.00 |
+|          3 | 2013-02-01     |          4000.00 |
+|          1 | 2013-01-01     |          4500.00 |
+|          2 | 2013-01-01     |          3500.00 |
++------------+----------------+------------------+
+5 rows in set (0.00 sec)
+
+mysql> create table Salesperson(S_no int primary key,S_name text,City text,Comm float(10,2));
+Query OK, 0 rows affected, 1 warning (0.05 sec)
+
+mysql> insert into salesperson values (1001,"Peel","London",.12);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from salesperson;
++------+--------+--------+------+
+| S_no | S_name | City   | Comm |
++------+--------+--------+------+
+| 1001 | Peel   | London | 0.12 |
++------+--------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into salesperson values
+    	(1002,"Serres","San jose",.13),
+    	(1004,"Motika","London",.11),
+    	 (1007,"Rafkin","Barcelona",.15),
+    	 (1003,Axelrod","New York",.1);
+    "> );
+    "> ^C
+mysql> insert into salesperson values
+    -> (1002,"Serres","San jose",.13),
+    -> (1004,"Motika","London",.11),
+    -> (1007,"Rafkin","Barcelona",.15),
+    -> (1003,Axelrod","New York",.1);
+    "> (1003,Axelrod","New York",.1);^C
+mysql> insert into salesperson values
+    	(1002,"Serres","San jose",.13),
+    	 (1004,"Motika","London",.11),
+    	 (1007,"Rafkin","Barcelona",.15),
+    	 (1003,"Axelrod","New York",.1);
+Query OK, 4 rows affected (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from salesperson;
++------+---------+-----------+------+
+| S_no | S_name  | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San jose  | 0.13 |
+| 1003 | Axelrod | New York  | 0.10 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rafkin  | Barcelona | 0.15 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> create Customer(Cnm int primary key,C_name text,City text,rating deci
+mal(10,2),S_no int ,foreign key(S_no) references salesperson(S_no));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Customer(Cnm int primary key,C_name text,City text,rating decimal(10,2),S_no int' at line 1
+mysql> create table Customer(Cnm int primary key,C_name text,City text,rating decimal(10,2),S_no int ,foreign key(S_no) references salesperson(S_no));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> describe customer;
++--------+---------------+------+-----+---------+-------+
+| Field  | Type          | Null | Key | Default | Extra |
++--------+---------------+------+-----+---------+-------+
+| Cnm    | int           | NO   | PRI | NULL    |       |
+| C_name | text          | YES  |     | NULL    |       |
+| City   | text          | YES  |     | NULL    |       |
+| rating | decimal(10,2) | YES  |     | NULL    |       |
+| S_no   | int           | YES  | MUL | NULL    |       |
++--------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into customer values
+    	 (201,"Hoffman","London",100,1001),
+    	(202,"Giovanne","Roe",200,1003),
+    	 (203,"liu","San Jose",300,1002),
+    	 (204,"Grass","Barcelona",100,1002),
+    	 (206,"Clemens","London",300,1007),
+    	 (207,"Pereira","Roe",100,1004);
+Query OK, 6 rows affected (0.04 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from customer;
++-----+----------+-----------+--------+------+
+| Cnm | C_name   | City      | rating | S_no |
++-----+----------+-----------+--------+------+
+| 201 | Hoffman  | London    | 100.00 | 1001 |
+| 202 | Giovanne | Roe       | 200.00 | 1003 |
+| 203 | liu      | San Jose  | 300.00 | 1002 |
+| 204 | Grass    | Barcelona | 100.00 | 1002 |
+| 206 | Clemens  | London    | 300.00 | 1007 |
+| 207 | Pereira  | Roe       | 100.00 | 1004 |
++-----+----------+-----------+--------+------+
+6 rows in set (0.00 sec)
+
+
+doubts:inheritance:3,4,8
