@@ -1,0 +1,36 @@
+(2)What is OOP? List OOP concepts?
+ANS: Object-Oriented Programming (OOP) is a programming paradigm that focuses on creating objects to represent real-world entities. These objects encapsulate data (attributes) and the behavior associated with that data (methods or functions).
+-->Concept of OOP:
+1.Objects
+2.Classes
+3.Inheritance
+4.polymorphism
+5.Abstraction
+6.Encapsulation
+
+(3). What is the difference between OOP and POP?
+Ans: OOP (Object-Oriented Programming) and POP (Procedural-Oriented Programming) are two different programming paradigms with distinct approaches to organizing and structuring code. Here's a breakdown of the key differences between the two:
+
+Core Concept:
+
+OOP revolves around the concept of "objects." It organizes code into objects that encapsulate data and behavior together. These objects interact with each other through defined interfaces.
+POP focuses on procedures or routines. It follows a linear execution model where a series of instructions are executed sequentially, often with a focus on procedures (functions or methods) manipulating data.
+Data and Behavior:
+
+In OOP, data and behavior are bundled together within objects. Objects have attributes (data) and methods (functions or procedures) that operate on that data.
+In POP, data and behavior are separate. Data is usually stored in variables, and behavior is defined through functions or procedures that operate on that data.
+Encapsulation:
+
+OOP emphasizes encapsulation, which means hiding the internal state of an object and requiring all interaction to be performed through well-defined interfaces. This promotes modularity and reduces dependencies between different parts of the code.
+In POP, encapsulation is not as prominent. Data can be accessed directly by any part of the code, leading to potential issues with data integrity and making it harder to maintain and debug large systems.
+Inheritance and Polymorphism:
+
+OOP supports inheritance, where classes (blueprints for objects) can inherit attributes and methods from other classes, promoting code reuse and hierarchical organization.
+OOP also supports polymorphism, allowing objects of different classes to be treated as objects of a common superclass. This enables more flexible and extensible code.
+POP typically lacks built-in support for inheritance and polymorphism, which can make code less flexible and harder to extend.
+
+
+    create table Cab_Type(cab_type_id int auto_increment,)
+    cab_type_name text,
+    description varchar(50),
+    base_fare float),primary key(cab_type_id));
