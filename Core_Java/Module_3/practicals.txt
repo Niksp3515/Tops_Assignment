@@ -97,16 +97,6 @@ end;
 z) Add column Pin with bigint data type in table student.
 Ans: alter table student add Pin bigint;
 
-aa) Modify the student table to change the sname length from 14 to 40.
-Ans: alter table student modify sname varchar(40);
-
-Create trigger to insert data:
-Ans: create trigger trg_insert_student 
-after insert on student 
-for each row 
-begin 
-    -- insert logic here 
-end;
 
 
 
