@@ -1,0 +1,139 @@
+a) select unique job from emp table.
+Ans: select distinct job from emp;
+
+b) list the details of the emps in asc order of the dptnos and desc of jobs?
+Ans: select * from emp order by deptno asc, job desc;
+
+c) display all the unique job groups in the descending order?
+Ans : select distinct job from emp order by job desc;
+
+d) list the emps who joined before 1981.
+Ans: select * from emp where hiredate < '1981-01-01';
+
+e) list the empno, ename, sal, daily sal of all emps in the asc order of annsal.
+Ans: select empno, ename, sal, sal/365 as daily_sal from emp order by sal asc;
+
+f) list the empno, ename, sal, exp of all emps working for mgr 7369.
+Ans: select e.empno, e.ename, e.sal, e.hiredate - m.hiredate as exp 
+from emp e, emp m 
+where e.mgr = m.empno and m.empno = 7369;
+
+g) display all the details of the emps who’s comm. is more than their sal?
+Ans: select * from emp where comm > sal;
+
+h) list the emps who are either ‘clerk’ or ‘analyst’ in the desc order.
+Ans: select * from emp where job in ('clerk', 'analyst') order by ename desc;
+
+i) list the emps who annual sal ranging from 22000 and 45000.
+Ans: select * from emp where sal between 22000/12 and 45000/12;
+
+j) list the enames those are starting with ‘s’ and with five characters.
+Ans: select ename from emp where ename like 's%' and length(ename) = 5;
+
+k) list the emps whose empno not starting with digit78.
+Ans: select * from emp where empno not like '78%';
+
+l) list all the clerks of deptno 20.
+Ans: select * from emp where deptno = 20 and job = 'clerk';
+
+m) list the emps who are senior to their own mgrs.
+Ans: select e.* 
+from emp e, emp m 
+where e.mgr = m.empno and e.hiredate < m.hiredate;
+
+n) list the emps of deptno 20 who’s jobs are same as deptno10.
+Ans: select e.* 
+from emp e, emp d 
+where e.deptno = 20 and d.deptno = 10 and e.job = d.job;
+
+o) list the emps who’s sal is same as ford or smith in desc order of sal.
+Ans: select * 
+from emp 
+where sal in (select sal from emp where ename in ('ford', 'smith')) 
+order by sal desc;
+
+p) List the emps whose jobs same as SMITH or ALLEN.
+Ans: select * from emp where job in (select job from emp where ename in ('SMITH', 'ALLEN'));
+
+q) Any jobs of deptno 10 those that are not found in deptno 20.
+Ans: select distinct job from emp where deptno = 10 and job not in (select job from emp where deptno = 20);
+
+r) Find the highest sal of EMP table.
+Ans: select max(sal) from emp;
+
+s) Find details of highest paid employee.
+Ans: select * from emp where sal = (select max(sal) from emp);
+
+t) Find the total sal given to the MGR.
+Ans: select sum(sal) from emp where job = 'MGR';
+
+u) List the emps whose names contains ‘A’.
+Ans: select * from emp where ename like '%A%';
+
+v) Find all the emps who earn the minimum Salary for each job wise in ascending order.
+Ans: select e.* 
+from emp e 
+where (e.job, e.sal) in (select job, min(sal) from emp group by job) 
+order by e.sal asc;
+
+w) List the emps whose sal greater than Blake’s sal.
+Ans: select * from emp where sal > (select sal from emp where ename = 'BLAKE');
+
+x) Create view v1 to select ename, job, dname, loc whose deptno are same.
+Ans: create view v1 as 
+select e.ename, e.job, d.dname, d.loc 
+from emp e, dept d 
+where e.deptno = d.deptno;
+
+y) Create a procedure with dno as input parameter to fetch ename and dname.
+Ans: create procedure get_emp_dept (@dno int) 
+as 
+begin 
+    select e.ename, d.dname 
+    from emp e, dept d 
+    where e.deptno = d.deptno and e.deptno = @dno; 
+end;
+
+z) Add column Pin with bigint data type in table student.
+Ans: alter table student add Pin bigint;
+
+aa) Modify the student table to change the sname length from 14 to 40.
+Ans: alter table student modify sname varchar(40);
+
+Create trigger to insert data:
+Ans: create trigger trg_insert_student 
+after insert on student 
+for each row 
+begin 
+    -- insert logic here 
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
